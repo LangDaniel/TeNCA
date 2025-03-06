@@ -1,3 +1,3 @@
-# Temporal Neural Cellular Automata
+# TeNCA
 
 Upon acceptance, we will make our code available.
