@@ -1,0 +1,36 @@
+output:
+  output_dir: './runs/unet/run'
+
+training:
+  loss: 'MAE'
+  epochs: 100
+  batch_size: 32
+  lr: 0.001
+  gamma: 0.99
+
+model:
+  model: 'unet'
+  n_time_points: 5
+  input_channels: 1
+  size_first_conv: 64
+
+data:
+  general:
+    sequences: ['pre', 'post_', 'sgmt']
+    data_root: './../data/'
+    patch_file: 'patches/mama_duke_lps_168x168x64_linrescale_pre_scaling/patches.h5'
+    max_time: 1024
+    time_noise: False
+    slices: 'patches/mama_duke_lps_168x168x64_linrescale_pre_scaling/slices/all_step_size_3.csv'
+    pad_outputs: True
+    subtraction: True
+    set_input_as_min: False # used automatically if subtraction is used as input is cliped to be > 0
+  train:
+    label_file: 'labels/mama_duke_with_time/train.csv' 
+    training: True
+  valid:
+    label_file: 'labels/mama_duke_with_time/valid.csv'
+    training: False
+  test:
+    label_file: 'labels/mama_duke_with_time/test.csv' 
+    training: True

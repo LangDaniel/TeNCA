@@ -1,0 +1,46 @@
+output:
+  output_dir: './runs/nca/run'
+
+training:
+  loss: 'MSE'
+  epochs: 100
+  steps: 128
+  batch_size: 16
+  lr: 0.001 # learning rate
+  gamma: 0.95
+
+model:
+  model: 'NCA'
+  n_time_points: 5 # max number of time points taken into account
+  hidden_channel: 23 # number of hidden channels
+  input_channels: 1 # number of image input channels gray scale -> 1
+  fire_rate: 0.5 # stochasticity, i.e. M in eq. (2)
+  propagate_time: False # append the current time step as an input to the fc layers (not used in the paper)
+  hidden_size: 128
+  init_method: 'standard'
+  activation: False # activation of the last fc layer
+  hard_encode_steps: False # use same (common) time for all cases (not used in the paper) 
+  kernel_size: 3 # kernel size of the conv layer
+  padding: 1 # padding of the conv layer
+  replace_by_targets: False # replace post-contrast prediction randomly by target (not used in the paper)
+
+data:
+  general:
+    sequences: ['pre', 'post_', 'sgmt']
+    data_root: './../data/'
+    patch_file: 'patches/mama_duke_lps_168x168x64_linrescale_pre_scaling/patches.h5'
+    max_time: 1024 # max time included     
+    time_noise: False # add noise to the time values (not used in the paper)
+    slices: 'patches/mama_duke_lps_168x168x64_linrescale_pre_scaling/slices/all_step_size_3.csv'
+    pad_outputs: True # pad output with nan to have the same size (needs to be True)
+    subtraction: False # output subtraction image (used for U-Net)
+    set_input_as_min: True # set input voxel values as min to reduce noise in the images
+  train:
+    label_file: 'labels/mama_duke_with_time/train.csv' 
+    training: True
+  valid:
+    label_file: 'labels/mama_duke_with_time/valid.csv'
+    training: False
+  test:
+    label_file: 'labels/mama_duke_with_time/test.csv' 
+    training: False
