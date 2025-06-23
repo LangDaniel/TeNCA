@@ -1,12 +1,325 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>TeNCA Page</title>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TeNCA: Temporal Neural Cellular Automata">
+  <meta name="keywords" content="Neural Cellular Automata, TeNCA">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TeNCA: Temporal Neural Cellular Automata</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
-
 <body>
-  Hello World!
-</body>
 
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+                Temporal Neural Cellular Automata: Application to modeling of contrast enhancement in breast MR
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+                Daniel M. Lang<sup>1,2</sup>,</span>
+            <span class="author-block">
+                Richard Osuala<sup>3</sup>,</span>
+            <span class="author-block">
+                Veronika J. Spieker<sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+                Karim Lekadir<sup>3</sup>,
+            </span>
+                Rickmer Braren<sup>4</sup>,
+            <span class="author-block">
+                Julia A. Schnabel<sup>1,2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Helmholtz Munich,</span>
+            <span class="author-block"><sup>2</sup>Technical University Munich,</span>
+            <span class="author-block"><sup>3</sup>Universitat de Barcelona,</span>
+            <span class="author-block"><sup>4</sup>Klinikum Rechts der Isar</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/LangDaniel/TeNCA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="content has-text-centered">
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/teasers/DUKE_019_40.mp4"
+                  type="video/mp4">
+        </video>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        TeNCA is able to continuously model contrast uptake.
+      </h2>
+    </div>
+  </div>
+</section>
+-->
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" id="teaser1" controls muted loop playsinline height="100%">
+            <source src="./static/videos/teasers/DUKE_323_32.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="teaser2" controls muted loop playsinline height="100%">
+            <source src="./static/videos/teasers/DUKE_303_25.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="teaser3" controls muted loop playsinline height="100%">
+            <source src="./static/videos/teasers/DUKE_541_28.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="teaser4" controls muted loop playsinline height="100%">
+            <source src="./static/videos/teasers/DUKE_019_40.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        TeNCA is able to continuously model the evolution of contrast enhancement solely based on pre-contrast acquisitions.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+                Synthetic contrast enhancement offers fast image acquisition
+                and eliminates the need for intravenous injection of contrast agent. This
+                is particularly beneficial for breast imaging, where long acquisition times
+                and high cost are significantly limiting the applicability of magnetic resonance
+                imaging (MRI) as a widespread screening modality.
+          </p>
+          <p>
+                Recent studies have demonstrated the feasibility of synthetic contrast generation.
+                However, current state-of-the-art (SOTA) methods lack sufficient measures
+                for consistent temporal evolution. Neural cellular automata (NCA) offer
+                a robust and lightweight architecture to model evolving patterns between
+                neighboring cells or pixels.
+          </p>
+          <p>
+                In this work we introduce TeNCA (Temporal Neural Cellular Automata),
+                which extends and further refines NCAs
+                to effectively model temporally sparse, non-uniformly sampled imaging data.
+                To achieve this, we advance the training strategy by enabling adaptive loss computation and define the
+                iterative nature of the method to resemble a physical progression in time. This conditions the model to learn
+                a physiologically plausible evolution of contrast enhancement. We rigorously train and test
+                TeNCA on a diverse breast MRI dataset and demonstrate its effectiveness, surpassing the performance of existing methods
+                in generation of images that align with ground truth post-contrast sequences.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Abstract. -->
+
+    <!-- Method overview. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method overview</h2>
+        <div>
+          <img src="./static/images/model_overview.png">
+          <div class="content has-text-justified">
+            <p>
+                At each step, our <span style="color:LightSeaGreen">neural cellular automata backbone</span> transitions the images
+                gradually to reflect the next time point. <span style="color:Plum">During training</span>, intermediate states are
+                conditioned at all time points with a given ground truth DCE-MRI available.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Method overview. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4">Dynamic modeling of contrast enhancement</h3>
+        <div class="content has-text-justified">
+          <p>
+            Notably, TeNCA and CC-Net are able to generate post-contrast sequences from an early stage, whereas
+            ground truth DCE generated post-contrast images and U-Net predictions become only available at later time points.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="95%">
+            <source src="./static/videos/full_videos/DUKE_019_40.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="95%">
+            <source src="./static/videos/full_videos/DUKE_541_28.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="95%">
+            <source src="./static/videos/full_videos/DUKE_323_32.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="95%">
+            <source src="./static/videos/full_videos/DUKE_303_25.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+        <div class="content has-text-justified">
+          <p>
+            <a href="https://arxiv.org/pdf/2403.13890">Towards learning contrast kinetics with multi-condition latent diffusion models</a>
+                introduces CC-Net, a latent diffusion model conditioning on acquisition time and supplementary imaging information using a ControlNet.<br>
+          </p>
+          <p>
+            <a href="https://link.springer.com/chapter/10.1007/978-3-031-77789-9_9">Virtual Dynamic Contrast Enhanced Breast MRI Using 2D U-Net Architectures</a>
+                develops two U-Net based architectures to model contrast enhancement.<br>
+          </p>
+          <p>
+            <a href="https://arxiv.org/pdf/2409.18872">Simulating Dynamic Tumor Contrast Enhancement in Breast MRI
+                using Conditional Generative Adversarial Networks</a> uses a generative adversarial network based on pix2pixHD.
+          </p>
+          <p>
+            Code for computation of the Fréchet Radiomics Distance (FRD) <a href="https://github.com/RichardObi/frd-score">can be found here.</a>
+          </p>
+          <p>
+            Data used in this study can be downloaded from the <a href="https://github.com/LidiaGarrucho/MAMA-MIA">MAMA-MIA website</a>
+            and from <a href="https://www.cancerimagingarchive.net/collection/duke-breast-cancer-mri/">TCIA.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{lang2025temporal,
+  author    = {Lang, Daniel M. and Osuala, Richard and Spieker, Veronika J. and Lekadir, Karim and Braren, Rickmer and Schnabel, Julia A.},
+  title     = {Temporal Neural Cellular Automata: Application to modeling of contrast enhancement in breast MR},
+  journal   = {arXiv},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/LangDaniel/TeNCA" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+        <div class="content">
+          <p>
+            This website borrowed code from <a href="https://github.com/nerfies/nerfies.github.io">here.</a>
+          </p>
+        </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
