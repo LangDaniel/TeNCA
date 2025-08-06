@@ -42,34 +42,6 @@ pg = patch_generator.GetPatches(
     orientation=orientation,
     instances=['pre']+[f'post_{i}' for i in range(0, 5)]+['sgmt']
 )
-#def get_case(pid):
-#    data = {}
-#    for inst in pg.instances:
-#        if pg.case_df.loc[pid][inst] == 'False' or inst == 'sgmt':
-#            continue
-#        data[f'{pid}/{inst}'] = pg.get_instance(pid, inst)
-#
-#    # rescale batch based on upper and lower percentile
-#    vmax = np.percentile(
-#        list(data.values()),
-#        upper_percentile
-#    )
-#    vmin = np.percentile(
-#        list(data.values()),
-#        lower_percentile
-#    )
-#    scaling = [[vmin, vmax], [0., 1.]]
-#    for key, value in data.items():
-#        data[key] = pg.rescale_linear(value, scaling, True)
-#    # -------------------------------------------------
-#    # add sgmt
-#    data[f'{pid}/sgmt'] = pg.get_instance(pid, 'sgmt')
-#    # -------------------------------------------------
-#    # add acquisition times
-#    if pid in acq_dict:
-#        data[f'{pid}/acquisition_times'] = acq_dict[pid]
-#
-#    return data
 
 def get_case(pid):
     data = {}
